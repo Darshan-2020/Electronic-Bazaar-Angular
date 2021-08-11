@@ -57,7 +57,7 @@ export class RegistrationComponent implements OnInit {
         window.location.href='/login';
 
       }, error =>{
-        alert("Error in signup " +error);
+        alert("This mobile number is already registerd..");
       }
      )
   }
