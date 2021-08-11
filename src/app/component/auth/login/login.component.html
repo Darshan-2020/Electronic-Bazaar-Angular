@@ -1,0 +1,52 @@
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+    <form #loginform="ngForm"  >
+        <div class="card card0 border-0">
+            <div class="row d-flex">
+
+                <div class="col-lg-6">
+                    <div class="card2 card border-0 px-4 py-5">
+
+                        <div class="row px-3">
+                            <label class="mb-1">
+                                <h6 class="mb-0 text-sm">Mobile Number</h6>
+                            </label>
+                            <input class="mb-4" type="text" name="mobile" placeholder="Enter a mobile number"
+                                [(ngModel)]="user.mobile" required pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                                #userMobile="ngModel">
+                                <div *ngIf="userMobile.errors" [ngClass]="'error'">
+                                    <div *ngIf="userMobile.errors.pattern" class="text-danger">
+                                        Mobile number is not valid.
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="row px-3">
+                            <label class="mb-1">
+                                <h6 class="mb-0 text-sm">Password</h6>
+                            </label>
+                            <input type="password" name="password" placeholder="Enter password" [(ngModel)]="user.password"
+                            required minlength="4" #password="ngModel">
+                            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert text-danger">
+
+                                <div *ngIf="password.errors?.minlength">
+                                    Password must be at least 4 characters long.
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 px-3">
+                            <button (click)="loginUserCheck()" type="submit" class="btn btn-blue text-center">Login</button>
+                        </div>
+                        <div class="row mb-4 px-3">
+                            <small class="font-weight-bold">Don't have an account?<a class="text-danger "
+                                    routerLink="/signup">Register</a>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+</div>

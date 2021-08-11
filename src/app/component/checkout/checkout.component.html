@@ -1,0 +1,18 @@
+<div class="row px-3">
+    <label class="mb-1">
+        <h6 class="mb-0 text-sm">Enter delivery Address</h6>
+    </label>
+    <input class="mb-4" type="text" name="email" placeholder="Enter a delivery address"  [(ngModel)] = "user.address">
+</div>
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Delivery Type
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton "  [(ngModel)] = "user.paymentType">
+      <a class="dropdown-item">Cod</a>
+      <a class="dropdown-item" >online</a>
+      
+    </div>
+    <div class="row mb-3 px-3"> <button (click)="checkoutCart(user) " type="submit" class="btn btn-blue text-center">OrderNow</button>
+    </div>
+  </div>
