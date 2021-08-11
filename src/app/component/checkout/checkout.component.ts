@@ -51,7 +51,7 @@ export class CheckoutComponent implements OnInit {
       }
       this.http.postRequestWithToken("api/order/checkout_order", request).subscribe((data) => {
 
-        alert("checkout process completed.Your Order is processed..");
+        alert("Checkout process completed.Your Order is processed..");
 
         console.log("order done")
       }, error => {
