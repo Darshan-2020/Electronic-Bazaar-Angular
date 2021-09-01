@@ -1,15 +1,15 @@
 .navbar {
-    background-color: #f2f2f2;
+    background-color:  #123564 ;
     font-size: 16px;
     
 }
 
 .navbar-brand{
-    color: black;
+    color: white;
     font-size: 25px;
 }
 .navabar-light .navbar-nav .nav-link {
-    color: black;
+    color: white;
     padding : 0 20px;
     transition: 0.3s;
 }

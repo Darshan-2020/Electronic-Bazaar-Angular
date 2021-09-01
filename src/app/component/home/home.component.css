@@ -1,3 +1,23 @@
+section{
+    padding: 20px;
+    width: 1280px;
+    margin: 20px auto;
+    
+}
+section ul{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+section ul li 
+{
+    list-style: none;
+    background: #eee ;
+    padding: 8px 20px;
+    margin: 5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
 ul {
     list-style-type: none;
     margin-left: 37%;

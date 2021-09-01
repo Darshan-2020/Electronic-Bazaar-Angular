@@ -3,6 +3,7 @@ export class ProductList {
     name!: string;
     price!: number;
     picbyte!: string;   
+  products: any;
    
     constructor(){}
 }

@@ -1,22 +1,44 @@
-<div class="container py-3">
+<div>
+    <div class="container py-3">
+        <div class="col-md-4" style="float:right ;">
+            <input type="text" [(ngModel)]="filters.keyword" name="keyword" (input)="getAllProducts()"
+                class="form-control " placeholder="search items" />
 
-    <div class="row g-4  pt-3 ">
-        <div class="col-3 my-2"  *ngFor="let product of productsList | paginate:{ itemsPerPage : 8 , currentPage:p};">
-            <div class="card h-100  ">
-                <img  class = "card-img-top" src="data:image/png;base64,{{product.picbyte}}"/>
-                <div class="card-body">
-                    <h5 class="card-title" style="font-weight: bold;">{{product.name}}</h5>
-                    
-                    <p class="card-text ">Price : {{product.price}} &#8360;</p>
-                </div>
-                <div class="card-footer">
-                    <p>
-                        <a (click)="addCart(product)" class="btn btn-lg text-white" style="background-color:#003366 ;margin-left:auto;margin-right:auto;display:block"   role="button">Add to Cart</a>
-                    </p>
+        </div>
+
+        <section>
+            <ul>
+                <li>
+                    <a (click)="getAllProducts()" role="button">All</a>
+                </li>
+                <li *ngFor="let category of categoryList" role="presentation">
+
+                    <a (click)="getProductsByCategory(category)"   role="button">{{category.name}} </a>
+                </li>
+            </ul>
+        </section>
+
+        <div class="row g-4  pt-3 ">
+            <div class="col-3 my-2"
+                *ngFor="let product of productsList | paginate:{ itemsPerPage : 8 , currentPage:p};">
+                <div class="card h-100  ">
+                    <img class="card-img-top" src="data:image/png;base64,{{product.picbyte}}" />
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight: bold;">{{product.name}}</h5>
+
+                        <p class="card-text ">Price : {{product.price}} &#8360;</p>
+                    </div>
+                    <div class="card-footer">
+                        <p>
+                            <a (click)="addCart(product)" class="btn btn-lg text-white"
+                                style="background-color:#123564 ;margin-left:auto;margin-right:auto;display:block"
+                                role="button">Add to Cart</a>
+                        </p>
+                    </div>
                 </div>
             </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
         </div>
-        <pagination-controls (pageChange) = "p = $event"></pagination-controls>
-        
     </div>
 </div>

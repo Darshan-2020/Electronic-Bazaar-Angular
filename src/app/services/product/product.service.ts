@@ -1,3 +1,4 @@
+import { AppService } from './../app.service';
 import { ProductList } from './../../models/product';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -7,8 +8,10 @@ import { Injectable } from '@angular/core';
 })
 export class ProductService {
 
-  constructor(private httpClient: HttpClient) { }
-  getItems() {
+  constructor(private httpClient: HttpClient, private http : AppService) { }
+  getItemsByCategory() {
     return this.httpClient.get<ProductList[]>('localhost:8080/product/getAllCategory');
   }
+
+ 
 }

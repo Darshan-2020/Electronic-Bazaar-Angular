@@ -1,3 +1,5 @@
+import { ProductList } from './../../models/product';
+import { ProductService } from './../../services/product/product.service';
 import { User } from './../../models/User';
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
@@ -12,23 +14,28 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
 
-  
-  public isLoggedIn! : boolean;
-  constructor(private http: AppService, private _http: UserService, router: Router) {
-    
-   }
 
- 
 
-ngOnInit(): void { 
-  this.isLoggedIn = this._http.isLoggedIn();  
-}
+  public isLoggedIn!: boolean;
+  constructor(private http: AppService, private _http: UserService, router: Router, private pservice: ProductService) {
 
-logout(){
-  this._http.logout();
-  this.isLoggedIn = false ;
-  
-}
- 
+  }
+
+
+
+  ngOnInit(): void {
+    this.isLoggedIn = this._http.isLoggedIn();
+  }
+
+  logout() {
+    this._http.logout();
+    this.isLoggedIn = false;
+
+  }
+
+
+
+
+
 
 }

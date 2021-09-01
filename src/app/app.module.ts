@@ -34,7 +34,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+  
     
   ],
   providers: [ UserService , AppService ],

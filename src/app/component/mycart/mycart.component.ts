@@ -11,7 +11,7 @@ import { MycartService } from 'src/app/services/mycart/mycart.service';
 })
 export class MycartComponent implements OnInit {
 
-
+  cartQty = 0;
   cartObj: any;
   cartTotalPrice: any;
   pay_type = "cash_on_delivery";
@@ -25,8 +25,6 @@ export class MycartComponent implements OnInit {
   ngOnInit(): void {
     this.getCartDetailsByUser();
     this.cartTotalAmount();
-
-
   }
 
   getCartDetailsByUser() {
@@ -40,12 +38,28 @@ export class MycartComponent implements OnInit {
     })
 
   }
- 
+  
+  qtyChange(qty : any,cartObj:any){
+    var request = {
+      "userId" : this.userService.getLoginDataByKey("user_id"),
+     "cartId":cartObj.id,
+     "qty":qty,
+     "price":(cartObj.price)*(qty),
+   }
+     this.http.postRequestWithToken("api/addtocart/updateQtyForCart",request).subscribe((data:any)=>{
+       this.getCartDetailsByUser();//for updating in the application..
+       this.cartTotalAmount();
+       console.log(cartObj.price)
+     },error=>{
+       alert("Error while fetching the cart Details");
+     })
+   }
   cartTotalAmount() {
     let request = { 'userId': this.userService.getLoginDataByKey("user_id") }
     this.http.postRequestWithToken("api/addtocart/getTotalAmount", request).subscribe((data) => {
 
       this.cartTotalPrice = data;
+      
 
     }, error => {
       alert("Your cart is empty !!!");

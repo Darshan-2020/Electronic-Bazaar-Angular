@@ -3,9 +3,14 @@
     <div *ngFor="let cartObject of cartObj  ">
       <div class="card-body">
         <h5 class="card-title">{{cartObject.productName}}</h5>
-        <p class="card-text">Qty : {{cartObject.qty}}</p>
+        <div class="sbmincart-details-quantity">
+          <select [(ngModel)]="cartObject.qty" (change)="qtyChange(cartObject.qty,cartObject)">
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+        </div>
         <p class="card-text">Price : {{cartObject.price}} &#8360;</p>
-        <a (click)=" removeCart(cartObject)" class="btn btn-lg text-white" style="background-color:#003366 ;"
+        <a (click)=" removeCart(cartObject)" class="btn btn-lg text-white" style="background-color:#123564 ;"
           role="button">remove</a>
         <hr>
       </div>
@@ -14,8 +19,10 @@
 
 
     <div class="text-center">
-      <a (click)=" removeAllCart(cartObj)" class="btn btn-lg text-white" style="background-color:#003366 ; width:45% ; margin:5px;"  role="button">Remove all items</a>
-      <a (click)=checkoutCart() class="btn btn-lg text-white" style="background-color:#003366 ;width:45%"  role="button">Order Now</a>
+      <a (click)=" removeAllCart(cartObj)" class="btn btn-lg text-white"
+        style="background-color:#123564 ; width:45% ; margin:5px;" role="button">Remove all items</a>
+      <a (click)=checkoutCart() class="btn btn-lg text-white" style="background-color:#123564 ;width:45%"
+        role="button">Order Now</a>
     </div>
   </div>
 </div>
